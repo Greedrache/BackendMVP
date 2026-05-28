@@ -1,6 +1,6 @@
 from django.db import models
 
-class Thema(models.Model):
+class Theme(models.Model):
     name = models.CharField(max_length=100, unique=True)
     description = models.TextField(blank=True, null=True)
 
@@ -8,38 +8,37 @@ class Thema(models.Model):
         verbose_name = "theme"
         verbose_name_plural = "themes"
 
-    def str(self):
+    def __str__(self):
         return self.name
 
 
-class These(models.Model):
-    # Definition der Antwortmöglichkeiten für die MVP
+class Statement(models.Model):
     POSITION_CHOICES = [
-        ('JA', 'Ja'),
-        ('NEIN', 'Nein'),
+        ('YES', 'Yes'),
+        ('NO', 'No'),
         ('NEUTRAL', 'Neutral'),
     ]
 
-    thema = models.ForeignKey(Thema, on_models=models.CASCADE, related_name='thesen')
-    titel = models.CharField(max_length=200, help_text="Kurztitel, z.B. '4-Tage-Woche' oder 'Massenüberwachung'")
-    text = models.TextField(help_text="Die eigentliche These, der der Nutzer zustimmen oder widersprechen kann.")
-
+    theme = models.ForeignKey(Theme, on_delete=models.CASCADE, related_name='statements')
+    title = models.CharField(max_length=200, help_text="Short title of the statement/question")
+    text = models.TextField(help_text="The actual statement the user can agree or disagree with")
+    
     mvp_position = models.CharField(
         max_length=7, 
         choices=POSITION_CHOICES, 
         default='NEUTRAL',
-        help_text="Die offizielle Position der MVP zu dieser These."
+        help_text="The official position of the MVP party"
     )
-
-    begruendung = models.TextField(
-        help_text="Der gestern optimierte Text aus dem Wahlprogramm, warum die MVP so positioniert ist."
+    
+    explanation = models.TextField(
+        help_text="The background text explaining why the party chose this position"
     )
-    erstellt_am = models.DateTimeField(auto_now_add=True)
+    created_at = models.DateTimeField(auto_now_add=True)
 
     class Meta:
-        verbose_name = "These"
-        verbose_name_plural = "Thesen"
-        ordering = ['erstellt_am']
+        verbose_name = "statement"
+        verbose_name_plural = "statements"
+        ordering = ['created_at']
 
-    def str(self):
-        return f"{self.thema.name} - {self.titel}"
+    def __str__(self):
+        return f"{self.theme.name} - {self.title}"
