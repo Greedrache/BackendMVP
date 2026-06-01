@@ -5,8 +5,14 @@ from ..models import Statement
 from .serializers import StatementSerializer
 
 class StatementListView(generics.ListAPIView):
-    queryset = Statement.objects.all()
     serializer_class = StatementSerializer
+
+    def get_queryset(self):
+        queryset = Statement.objects.all().order_by('created_at')
+        limit = self.request.query_params.get('limit')
+        if limit and limit.isdigit():
+            return queryset[: int(limit)]
+        return queryset[:15]
 
 
 class EvaluateVotingView(APIView):

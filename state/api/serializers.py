@@ -12,4 +12,4 @@ class StatementSerializer(serializers.ModelSerializer):
 
     class Meta:
         model = Statement
-        fields = ['id', 'theme', 'theme_name', 'title', 'text', 'mvp_position', 'explanation']
+        fields = ['id', 'theme', 'theme_name', 'title', 'text', 'explanation']
