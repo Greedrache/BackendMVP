@@ -112,8 +112,13 @@ USE_I18N = True
 
 USE_TZ = True
 
+ALLOWED_HOSTS = ['httpts://mvp-politik.de', 'mvp-politik.de'] 
+
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
 
 STATIC_URL = 'static/'
+
+import os
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
