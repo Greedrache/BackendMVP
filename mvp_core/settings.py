@@ -25,7 +25,6 @@ SECRET_KEY = 'django-insecure-_ct%@!exoyak7757^hj(_yoq$ujaz3$ck6iei&j_4n_cxpqhs-
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
 
 
 # Application definition
@@ -112,7 +111,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-ALLOWED_HOSTS = ['httpts://mvp-politik.de', 'mvp-politik.de'] 
+ALLOWED_HOSTS = ['httpts://mvp-politik.de', 'mvp-politik.de', 'backendmvp.onrender.com'] 
 
 
 # Static files (CSS, JavaScript, Images)
@@ -121,4 +120,5 @@ ALLOWED_HOSTS = ['httpts://mvp-politik.de', 'mvp-politik.de']
 STATIC_URL = 'static/'
 
 import os
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
+
