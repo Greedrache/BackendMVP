@@ -31,6 +31,7 @@ DEBUG = True
 
 INSTALLED_APPS = [
     'django.contrib.admin',
+    'corsheaders',
     'django.contrib.auth',
     'django.contrib.contenttypes',
     'django.contrib.sessions',
@@ -41,6 +42,7 @@ INSTALLED_APPS = [
 ]
 
 MIDDLEWARE = [
+    'corsheaders.middleware.CorsMiddleware',
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -111,8 +113,10 @@ USE_I18N = True
 
 USE_TZ = True
 
-ALLOWED_HOSTS = ['httpts://mvp-politik.de', 'mvp-politik.de', 'backendmvp.onrender.com'] 
-
+CORS_ALLOWED_ORIGINS = [
+    "https://mvp-politik.de",
+    "https://backendmvp.onrender.com"
+]
 
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/6.0/howto/static-files/
