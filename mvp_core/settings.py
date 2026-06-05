@@ -123,7 +123,7 @@ CORS_ALLOWED_ORIGINS = [
 
 STATIC_URL = 'static/'
 
-ALLOWED_HOSTS = ['backendmvp.onrender.com']  # Allow all hosts (not recommended for production)
+ALLOWED_HOSTS = ['backendmvp.onrender.com', '127.0.0.1']  # Allow all hosts (not recommended for production)
 
 import os
 STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles') 
